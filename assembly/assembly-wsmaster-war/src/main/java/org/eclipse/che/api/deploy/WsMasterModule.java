@@ -305,7 +305,9 @@ public class WsMasterModule extends AbstractModule {
     if (OpenShiftInfrastructure.NAME.equals(infrastructure)
         || KubernetesInfrastructure.NAME.equals(infrastructure)) {
       install(new ReplicationModule(persistenceProperties));
-
+      bind(
+          org.eclipse.che.multiuser.permission.workspace.infra.kubernetes
+              .BrokerServicePermissionFilter.class);
       configureJwtProxySecureProvisioner(infrastructure);
     } else {
       bind(RemoteSubscriptionStorage.class)
@@ -338,6 +340,8 @@ public class WsMasterModule extends AbstractModule {
 
     // Permission filters
     bind(org.eclipse.che.multiuser.permission.system.SystemServicePermissionsFilter.class);
+    bind(
+        org.eclipse.che.multiuser.permission.system.SystemEventsSubscriptionPermissionsCheck.class);
 
     Multibinder<String> binder =
         Multibinder.newSetBinder(binder(), String.class, Names.named(SYSTEM_DOMAIN_ACTIONS));
