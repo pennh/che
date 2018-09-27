@@ -11,7 +11,7 @@
 FROM centos
 
 ARG GITHUB_TOKEN
-ARG THEIA_VERSION=0.3.13
+ARG THEIA_VERSION=0.3.14
 
 EXPOSE 3000 3030
 
@@ -22,8 +22,10 @@ ENV THEIA_VERSION=${THEIA_VERSION} \
 WORKDIR ${HOME}
 
 ADD src/ ${HOME}/
+ADD config.yaml ${HOME}/.config/verdaccio/
 ADD supervisord.conf /etc/
 
 RUN ${HOME}/setup.sh
 
+USER theia
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]

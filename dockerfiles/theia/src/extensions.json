@@ -38,13 +38,27 @@
         {
             "name": "@eclipse-che/che-theia-hosted-plugin-manager-extension",
             "source": "https://github.com/eclipse/che-theia-hosted-plugin-manager-extension.git",
-            "checkoutTo": "latest-deps",
+            "checkoutTo": "master",
             "type": "git"
         },
         {
             "name": "@eclipse-che/theia-java-extension",
             "source": "https://github.com/eclipse/che-theia-java-plugin",
             "folder": "che-theia-java-extension",
+            "checkoutTo": "master",
+            "type": "git"
+        },
+        {
+            "name": "che-theia-terminal",
+            "source": "https://github.com/eclipse/che-theia-terminal-extension.git",
+            "folder": "che-theia-terminal",
+            "checkoutTo": "master",
+            "type": "git"
+        },
+        {
+            "name": "@eclipse-che/theia-task-extension",
+            "source": "https://github.com/eclipse/che-theia-task-plugin.git",
+            "folder": "che-theia-task-extension",
             "checkoutTo": "master",
             "type": "git"
         }
